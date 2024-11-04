@@ -446,6 +446,7 @@ jobs:
             ${{ steps.vars.outputs.connectivity_test_defaults }} \
             --junit-file "cilium-junits/${{ env.job_name }} - pre-upgrade (${{ join(matrix.*, ', ') }}).xml" \
             --junit-property github_job_step="Run tests pre-upgrade (${{ join(matrix.*, ', ') }})"
+            --test '!check-log-errors' # Until https://github.com/cilium/cilium/issues/35865 is resolved.
 
           # Create pods which establish long lived connections. They will be used by
           # subsequent connectivity tests with --include-conn-disrupt-test to catch any

@@ -577,6 +577,7 @@ jobs:
           cilium --context ${{ env.contextName1 }} connectivity test ${{ steps.vars.outputs.connectivity_test_defaults }} \
           --junit-file "cilium-junits/${{ env.job_name }} (${{ join(matrix.*, ', ') }}).xml" \
           --junit-property github_job_step="Run connectivity test (${{ join(matrix.*, ', ') }})"
+          --test '!check-log-errors' # Until https://github.com/cilium/cilium/issues/35865 is resolved.
 
       - name: Post-test information gathering
         if: ${{ !success() && steps.install-cilium-cluster1.outcome != 'skipped' }}
