@@ -243,6 +243,8 @@ jobs:
           aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws configure set aws_session_token ${{ env.AWS_SESSION_TOKEN }}
           aws configure set default.region ${{ env.AWS_REGION }}
+          echo "display path:"
+          echo $PATH
           echo "testing eksctl:"
           eksctl version
 
